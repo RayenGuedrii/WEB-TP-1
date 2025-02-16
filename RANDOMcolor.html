@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste avec couleurs aléatoires</title>
+    <style>
+        li {
+            cursor: pointer;
+            padding: 10px;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <ol id="maListe">
+        <li>Élément 1</li>
+        <li>Élément 2</li>
+        <li>Élément 3</li>
+        <li>Élément 4</li>
+        <li>Élément 5</li>
+    </ol>
+    
+    <script>
+        function getCouleurAleatoire() {
+            return '#' + Math.floor(Math.random() * 16777215).toString(16);
+        }
+
+        document.querySelectorAll("#maListe li").forEach(li => {
+            li.addEventListener("click", function() {
+                this.style.color = getCouleurAleatoire();
+            });
+        });
+    </script>
+</body>
+</html>

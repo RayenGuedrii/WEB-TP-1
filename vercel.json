@@ -1,0 +1,21 @@
+{
+    "routes": [
+      {
+        "src": "/",
+        "dest": "/Game.html"
+      },
+      {
+        "src": "/miniWORD",
+        "dest": "/miniWORD.html"
+      },
+      {
+        "src": "/RANDOMcolor",
+        "dest": "/RANDOMcolor.html"
+      },
+      {
+        "src": "/TODO",
+        "dest": "/TODO.html"
+      }
+    ]
+  }
+  

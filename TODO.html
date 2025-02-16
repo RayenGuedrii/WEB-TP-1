@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background: lightgray;
+}
+.todo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 40%;
+}
+.form-container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+.delete-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+#add-btn {
+    background: skyblue;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+    </style>
+    <title>Gestionnaire de TODO</title>
+</head>
+<body>
+    <div class="todo-container" id="todo-list">
+        <h2>Liste des activités</h2>
+    </div>
+    
+    <div class="form-container">
+        <h2>Ajouter une activité</h2>
+        <input type="text" id="todo-name" placeholder="Nom">
+        <input type="text" id="todo-content" placeholder="Contenu">
+        <button id="add-btn">Add TODO</button>
+    </div>
+
+    <script>
+        function createTodoItem(name, content) {
+            const item = document.createElement("div");
+            item.classList.add("todo-item");
+            
+            const text = document.createElement("span");
+            text.textContent = `${name}: ${content}`;
+            
+            const deleteBtn = document.createElement("button");
+            deleteBtn.innerHTML = "🗑️";
+            deleteBtn.classList.add("delete-btn");
+            deleteBtn.addEventListener("click", () => item.remove());
+            
+            item.appendChild(text);
+            item.appendChild(deleteBtn);
+            
+            return item;
+        }
+        
+        document.getElementById("add-btn").addEventListener("click", () => {
+            const name = document.getElementById("todo-name").value.trim();
+            const content = document.getElementById("todo-content").value.trim();
+            
+            if (name && content) {
+                const todoList = document.getElementById("todo-list");
+                todoList.appendChild(createTodoItem(name, content));
+                document.getElementById("todo-name").value = "";
+                document.getElementById("todo-content").value = "";
+            }
+        });
+    </script>
+</body>
+</html>
